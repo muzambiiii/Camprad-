@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campradé – Student Books, Tutors & Trade</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="#top">Campra<span>dé</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <nav id="nav">
+    <a href="#buy">Buy Books</a>
+    <a href="#tutors">Book Tutors</a>
+    <a href="#trade">Trade</a>
+    <a href="#mine" id="mineLink" hidden>My Activity</a>
+    <a href="#about">About</a>
+  </nav>
+  <div class="auth-area">
+    <span id="hello" hidden></span>
+    <button class="btn" id="loginBtn">Log in</button>
+    <button class="btn ghost" id="logoutBtn" hidden>Log out</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <h1>Your campus marketplace</h1>
+    <p>Buy used textbooks, book student tutors, and trade your own books or skills — all in one place.</p>
+    <div class="hero-cta">
+      <a class="btn big" href="#buy">Browse books</a>
+      <a class="btn big ghost-dark" href="#trade">Start trading</a>
+    </div>
+    <p class="hint">Demo login: <b>demo@campus.edu</b> / <b>password123</b></p>
+  </section>
+
+  <section id="buy" class="section">
+    <h2>📚 Buy Books</h2>
+    <input class="search" id="bookSearch" placeholder="Search by title, author or course (e.g. CS 201)">
+    <div class="grid" id="bookList"></div>
+  </section>
+
+  <section id="tutors" class="section alt">
+    <h2>🎓 Book Tutors</h2>
+    <input class="search" id="tutorSearch" placeholder="Search by subject or name (e.g. Calculus)">
+    <div class="grid" id="tutorList"></div>
+  </section>
+
+  <section id="trade" class="section">
+    <h2>🔁 Trade</h2>
+    <p class="sub">Sell your books or list yourself as a tutor. You need to be logged in.</p>
+    <div class="two-col">
+      <form id="bookForm" class="card form">
+        <h3>Sell a book</h3>
+        <input name="title" placeholder="Title *" required>
+        <input name="author" placeholder="Author">
+        <input name="course" placeholder="Course code (e.g. BIO 110)">
+        <select name="condition"><option>Like new</option><option selected>Good</option><option>Fair</option><option>Worn</option></select>
+        <input name="price" type="number" min="0" step="0.5" placeholder="Price in $ *" required>
+        <button class="btn" type="submit">List my book</button>
+      </form>
+      <form id="tutorForm" class="card form">
+        <h3>Become a tutor</h3>
+        <input name="subject" placeholder="Subject(s) *" required>
+        <input name="rate" type="number" min="1" step="1" placeholder="Hourly rate in $ *" required>
+        <textarea name="bio" rows="4" placeholder="Short bio / experience"></textarea>
+        <button class="btn" type="submit">List myself as tutor</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="mine" class="section alt" hidden>
+    <h2>👤 My Activity</h2>
+    <div id="mineBox" class="grid"></div>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Campradé</h2>
+    <p class="sub">Made by students, for students. Save money on course materials, find help before exams, and earn from what you already have.</p>
+    <div class="grid three">
+      <div class="card"><h3>Safe</h3><p>Everyone logs in with a student account.</p></div>
+      <div class="card"><h3>Affordable</h3><p>Used books and peer tutors cost far less.</p></div>
+      <div class="card"><h3>Local</h3><p>Meet on campus — no shipping needed.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <strong>Campradé</strong>
+    <p>Books, tutors and trade for students.</p>
+  </div>
+  <div>
+    <a href="#buy">Buy Books</a><br><a href="#tutors">Book Tutors</a><br><a href="#trade">Trade</a>
+  </div>
+  <div>
+    <a href="mailto:support@campradé.example">support@campradé.example</a><br>
+    <a href="#about">Terms</a> · <a href="#about">Privacy</a>
+  </div>
+  <p class="copy">© <span id="year"></span> Campradé. All rights reserved.</p>
+</footer>
+
+<!-- Login / Register modal -->
+<div class="modal" id="authModal" hidden>
+  <form class="card modal-box" id="authForm">
+    <button type="button" class="close" id="closeModal">×</button>
+    <h3 id="authTitle">Log in</h3>
+    <input name="name" id="nameField" placeholder="Full name" hidden>
+    <input name="email" type="email" placeholder="Student email" required>
+    <input name="password" type="password" placeholder="Password (6+ characters)" required>
+    <button class="btn" type="submit" id="authSubmit">Log in</button>
+    <p class="switch"><a href="#" id="switchMode">New here? Create an account</a></p>
+  </form>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
